@@ -6,10 +6,10 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
 WORKDIR /src
-COPY ["FreakyFashionServices.Catalog.csproj", "./"]
-RUN dotnet restore "FreakyFashionServices.Catalog.csproj"
+COPY ["FreakyFashionServices.Catalog/FreakyFashionServices.Catalog.csproj", "FreakyFashionServices.Catalog/"]
+RUN dotnet restore "FreakyFashionServices.Catalog/FreakyFashionServices.Catalog.csproj"
 COPY . .
-WORKDIR "/src/"
+WORKDIR "/src/FreakyFashionServices.Catalog"
 RUN dotnet build "FreakyFashionServices.Catalog.csproj" -c Release -o /app/build
 
 FROM build AS publish

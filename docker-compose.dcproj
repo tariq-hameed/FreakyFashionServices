@@ -3,10 +3,10 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>c7ad8f1a-598f-4df0-be95-3d2bf03c4bba</ProjectGuid>
+    <ProjectGuid>7a5d7e3f-3dab-46a1-a318-565af849b9fa</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
-    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/items</DockerServiceUrl>
-    <DockerServiceName>freakyfashionservices.catalog</DockerServiceName>
+    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
+    <DockerServiceName>freakyfashionservices.basket</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">

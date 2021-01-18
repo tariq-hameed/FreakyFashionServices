@@ -1,8 +1,15 @@
 version: '3.4'
 
 services:
+  freakyfashionservices.basket:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+
   freakyfashionservices.catalog:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "80"
+

@@ -1,6 +1,21 @@
 version: '3.4'
 
-services:  
+services:
+  freakyfashionservices.basket:
+    image: ${DOCKER_REGISTRY-}freakyfashionservicesbasket
+    build:
+      context: .
+      dockerfile: FreakyFashionServices.Basket/Dockerfile
+
+  freakyfashionservices.catalog:
+    image: ${DOCKER_REGISTRY-}freakyfashionservicescatalog
+    build:
+      context: .
+      dockerfile: FreakyFashionServices.Catalog/Dockerfile
+
+  redis:
+    image: redis
+
   ms-sql-server:
     container_name: sql1
     image: mcr.microsoft.com/mssql/server
@@ -11,11 +26,3 @@ services:
         - C:\DockerVolumes\formssql:/var/opt/mssql/data
     ports:
       - "1433:1433"
-  freakyfashionservices.catalog:
-    container_name: freakyfashionContainer
-    image: freakyfashion:latest
-    build: .
-    environment: 
-        DBServer: "ms-sql-server"
-    ports:
-      - "8080:80"
