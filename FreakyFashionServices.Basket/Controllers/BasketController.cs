@@ -22,24 +22,25 @@ namespace FreakyFashionServices.Basket.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<CreateBasketDto> GetBasket(String id)
+        public async Task<BasketDto> GetBasket(String id)
         {
             var serializedData = await cache.GetStringAsync(id);
-            var basket = JsonSerializer.Deserialize<CreateBasketDto>(serializedData);
+            var basket = JsonSerializer.Deserialize<BasketDto>(serializedData);
             
             return basket; //200 ok
         }
 
+        
         [HttpPost]
-        public async Task<IActionResult> CreateBasket(CreateBasketDto createBasketDto)
+        public async Task<IActionResult> CreateBasket(BasketDto createBasketDto)
         {
-            await cache.SetRecordAsync(createBasketDto.Id, createBasketDto);           
+            await cache.SetRecordAsync(createBasketDto.Id.ToString(), createBasketDto);
             return Ok(); //200 ok
         }
         [HttpPut("{id}")]
-        public async Task<IActionResult> Putbas(int id, [FromBody] CreateBasketDto basket)
+        public async Task<IActionResult> PutBasket(int id, [FromBody] BasketDto basket) 
         {
-            await cache.SetRecordAsync<CreateBasketDto>(id.ToString(), basket);
+            await cache.SetRecordAsync(id.ToString(), basket);
             return Ok();
         }
 

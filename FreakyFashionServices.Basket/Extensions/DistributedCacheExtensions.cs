@@ -19,8 +19,8 @@ namespace FreakyFashionServices.Basket.Extensions
         {
             var options = new DistributedCacheEntryOptions();
 
-            options.AbsoluteExpirationRelativeToNow = absoluteExpireTime ?? TimeSpan.FromSeconds(60);
-            options.SlidingExpiration = unusedExpiredTime;
+            //options.AbsoluteExpirationRelativeToNow = absoluteExpireTime ?? TimeSpan.FromSeconds(60);
+            //options.SlidingExpiration = unusedExpiredTime;
 
             var jsonData = JsonSerializer.Serialize(data);
             await cache.SetStringAsync(recordId, jsonData, options);
