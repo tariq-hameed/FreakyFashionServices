@@ -13,6 +13,21 @@ services:
       context: .
       dockerfile: FreakyFashionServices.Catalog/Dockerfile
 
+
+  freakyfashionservices.gateway:
+    image: ${DOCKER_REGISTRY-}freakyfashionservicesgateway
+    build:
+      context: .
+      dockerfile: FreakyFashionServices.Gateway/Dockerfile
+
+
+  freakyfashionservices.productprice:
+    image: ${DOCKER_REGISTRY-}freakyfashionservicesproductprice
+    build:
+      context: .
+      dockerfile: FreakyFashionServices.ProductPrice/Dockerfile
+
+
   redis:
     image: redis
 
@@ -26,3 +41,10 @@ services:
         - C:\DockerVolumes\formssql:/var/opt/mssql/data
     ports:
       - "1433:1433"
+
+  freakyfashionservices.order:
+    image: ${DOCKER_REGISTRY-}freakyfashionservicesorder
+    build:
+      context: .
+      dockerfile: FreakyFashionServices.Order/Dockerfile
+

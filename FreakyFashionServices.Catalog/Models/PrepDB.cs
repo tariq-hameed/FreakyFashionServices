@@ -28,26 +28,26 @@ namespace FreakyFashionServices.Catalog.Models
                 System.Console.WriteLine("Adding data - seeding....");
                 context.Items.AddRange(
                     new Items()
-                        {
-                            Name="Black T-SHirt",
-                            Description="Lorem ipsum dolor",
-                            Price="299",
-                            AvailableStock=12
-                        },
-                        new Items()
-                        {
-                            Name = "Turtle Neck-sweater",
-                            Description = "Lorem ipsum dolor",
-                            Price = "199",
-                            AvailableStock = 5
-                        },
-                        new Items()
-                        {
-                            Name = "Red Hoodie",
-                            Description = "Lorem ipsum dolor",
-                            Price = "399",
-                            AvailableStock = 17
-                        }
+                    {
+                        ArticleNumber = "ABC123",
+                        Name ="Black T-SHirt",
+                        Description="Lorem ipsum dolor",                        
+                        AvailableStock=12
+                    },
+                    new Items()
+                    {
+                        ArticleNumber = "CBA321",
+                        Name = "Turtle Neck-sweater",
+                        Description = "Lorem ipsum dolor",                        
+                        AvailableStock = 5
+                    },
+                    new Items()
+                    {
+                        ArticleNumber = "AAA123",
+                        Name = "Red Hoodie",
+                        Description = "Lorem ipsum dolor",                        
+                        AvailableStock = 17
+                    }
                     );
                 context.SaveChanges();
             }

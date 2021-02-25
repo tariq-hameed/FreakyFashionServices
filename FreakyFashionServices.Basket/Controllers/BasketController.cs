@@ -1,4 +1,4 @@
-﻿using FreakyFashionServices.Basket.Models.DTO;
+﻿ using FreakyFashionServices.Basket.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
 using System;
@@ -14,7 +14,6 @@ namespace FreakyFashionServices.Basket.Controllers
     [Route("[controller]")]
     public class BasketController : ControllerBase
     {
-        //List<string> todos = new List<string>(); 
         private readonly IDistributedCache cache;
         public BasketController(IDistributedCache cache)
         {
@@ -34,17 +33,21 @@ namespace FreakyFashionServices.Basket.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateBasket(BasketDto createBasketDto)
         {
-            await cache.SetRecordAsync(createBasketDto.Id.ToString(), createBasketDto);
+            await cache.SetRecordAsync(createBasketDto.Id, createBasketDto);
             return Ok(); //200 ok
         }
+        
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutBasket(int id, [FromBody] BasketDto basket) 
+        public async Task<ActionResult> Put(string id, [FromBody] BasketDto basket)
         {
+            if (id != basket.Id)
+            {
+                return BadRequest(); //404 bad request
+            }
             await cache.SetRecordAsync(id.ToString(), basket);
-            return Ok();
+            return NoContent();
         }
 
 
-        
     }
 }

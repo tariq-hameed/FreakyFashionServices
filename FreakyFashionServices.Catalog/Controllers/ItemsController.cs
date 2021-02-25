@@ -27,24 +27,38 @@ namespace FreakyFashionServices.Catalog.Controllers
             var projectedItems = myItems.Select(x => new ItemsDto
             {
                 Id = x.Id,
+                ArticleNumber = x.ArticleNumber,
                 Name = x.Name,
                 Description = x.Description,
-                Price = x.Price,
                 AvailableStock = x.AvailableStock
             });
             return projectedItems;
         }
         
 
-        [HttpGet("{id}")]
-        public ActionResult<ItemsDto> GetById(int id)
+        //[HttpGet("{id}")]
+        //public ActionResult<ItemsDto> GetById(int id)
+        //{
+        //    var result = _context.Items
+        //         .FirstOrDefault(x => x.Id == id);
+
+        //    if (result == null)
+        //    {
+        //        return NotFound(); 
+        //    }
+
+        //    return ToItemsDto(result);
+
+        //}
+        [HttpGet("{articleNumber}")]
+        public ActionResult<ItemsDto> GetByArticle(string articleNumber)
         {
             var result = _context.Items
-                 .FirstOrDefault(x => x.Id == id);
+                 .FirstOrDefault(x => x.ArticleNumber == articleNumber);
 
             if (result == null)
             {
-                return NotFound(); 
+                return NotFound();
             }
 
             return ToItemsDto(result);
@@ -65,9 +79,9 @@ namespace FreakyFashionServices.Catalog.Controllers
             return new ItemsDto
             {
                 Id = items.Id,
+                ArticleNumber = items.ArticleNumber,
                 Name = items.Name,
                 Description = items.Description,
-                Price = items.Price,
                 AvailableStock = items.AvailableStock
             };
         }

@@ -7,7 +7,7 @@ namespace FreakyFashionServices.Basket.Models.DTO
 {
     public class ProductDto 
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string ProductName { get; set; }
         public int UnitPrice { get; set; }
         public int Quantity { get; set; }
